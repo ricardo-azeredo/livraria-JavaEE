@@ -1,7 +1,7 @@
 
 package br.com.livraria.DTO;
 
-public abstract class Livros {
+public class Livros {
     private int livroId;
     private String nomeLivro;
     private String isbn;
@@ -21,11 +21,11 @@ public abstract class Livros {
         return nomeLivro;
     }
     
-    public void setnomeLivro(String nomeLivro){
+    public void setNomeLivro(String nomeLivro){
         this.nomeLivro = nomeLivro;
     }
     
-    public String isbn(){
+    public String getIsbn(){
         return isbn;
     }
     
