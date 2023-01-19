@@ -17,6 +17,9 @@
             try{
                 Livros livro = new Livros();
                 livro.setNomeLivro(request.getParameter("nome"));
+                livro.setIsbn(request.getParameter("isbn"));
+                livro.setValor(Double.parseDouble(request.getParameter("valor")));
+                livro.setAutorId(livro.getAutorId());
 
                 LivroDAO livroDAO = new LivroDAO();
                 livroDAO.CadastrarLivro(livro);

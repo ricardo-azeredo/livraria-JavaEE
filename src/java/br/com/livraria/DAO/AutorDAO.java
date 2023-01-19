@@ -1,44 +1,41 @@
 
 package br.com.livraria.DAO;
 
-import br.com.livraria.DTO.LivroFisico;
+import br.com.livraria.DTO.Autor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import br.com.livraria.DTO.Livros;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
 /**
  *
- * @author Ricardo
+ * @author admin
  */
-public class LivroDAO {
+public class AutorDAO {
     Connection conn;
     PreparedStatement pstm;
     ResultSet rs;
-    ArrayList<Livros> lista = new ArrayList<>();
+    ArrayList<Autor> lista = new ArrayList<>();
     
-   
-        
-    public void CadastrarLivro(Livros livro) throws ClassNotFoundException{
-        String sql = "INSERT INTO livros (nome_livro, isbn, valor, autorId) VALUES (?, ?, ?, ?)";
+    public void CadastrarAutor(Autor autor) throws ClassNotFoundException {
+        String sql = "INSERT INTO autor(nome, email) VALUES (?, ?)";
         conn = new ConexaoDAO().conexaoDB();
         
         try {
             pstm = conn.prepareStatement(sql);
-            pstm.setString(1, livro.getNomeLivro());
-            pstm.setString(2, livro.getIsbn());
-            pstm.setDouble(3, livro.getValor());
-            pstm.setInt(4, Integer.parseInt(livro.getAutorId().toString()));
+            pstm.setString(1, autor.getNomeAutor());
+            pstm.setString(2, autor.getEmail());
             pstm.execute();
             pstm.close();
+            
         } catch(SQLException e){
             System.out.println("Não foi possível cadastrar ");
         }
     }
     
-    public ArrayList<Livros> PesquisarLivro() throws ClassNotFoundException {
+    public ArrayList<Autor> PesquisarLivro() throws ClassNotFoundException {
         String sql = "SELECT * FROM livros";
         conn = new ConexaoDAO().conexaoDB();
         
@@ -48,11 +45,11 @@ public class LivroDAO {
             
             while(rs.next()){
                                
-                LivroFisico livroFisico = new LivroFisico();
-                livroFisico.setLivroID(rs.getInt("id")); 
-                livroFisico.setNomeLivro(rs.getString("nome_livro"));
+                Autor autor = new Autor();
+                autor.setAutorId(rs.getInt("id")); 
+                autor.setNomeAutor(rs.getString("nome"));
                 
-                lista.add(livroFisico);
+                lista.add(autor);
                
             }
             pstm.close();
