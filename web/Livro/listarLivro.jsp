@@ -1,8 +1,4 @@
-<%-- 
-    Document   : listarLivro
-    Created on : 11 de jan. de 2023, 15:37:54
-    Author     : Ricardo
---%>
+
 <%@page import="br.com.livraria.DAO.LivroDAO"%>
 <%@page import="br.com.livraria.DTO.Livros"%>
 <%@page import="java.util.ArrayList"%>

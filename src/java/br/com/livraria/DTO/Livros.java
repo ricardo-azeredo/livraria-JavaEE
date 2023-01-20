@@ -6,7 +6,7 @@ public class Livros {
     private String nomeLivro;
     private String isbn;
     private double valor;
-    private Autor autorId;
+    private int autorId;
     
     
     public int getLivroID(){
@@ -41,11 +41,11 @@ public class Livros {
        this.valor = valor;
    }
    
-   public Autor getAutorId(){
+   public int getAutorId(){
        return autorId;
    }
    
-   public void setAutorId(Autor autorId) {
+   public void setAutorId(int autorId) {
        this.autorId = autorId;
    }       
 }

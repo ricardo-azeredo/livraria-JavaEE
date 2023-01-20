@@ -35,8 +35,8 @@ public class AutorDAO {
         }
     }
     
-    public ArrayList<Autor> PesquisarLivro() throws ClassNotFoundException {
-        String sql = "SELECT * FROM livros";
+    public ArrayList<Autor> PesquisarAutor() throws ClassNotFoundException {
+        String sql = "SELECT * FROM autor";
         conn = new ConexaoDAO().conexaoDB();
         
         try {
@@ -58,4 +58,6 @@ public class AutorDAO {
         }
         return lista;
     }
+    
+    
 }

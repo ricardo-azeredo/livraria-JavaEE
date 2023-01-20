@@ -30,7 +30,7 @@ public class LivroDAO {
             pstm.setString(1, livro.getNomeLivro());
             pstm.setString(2, livro.getIsbn());
             pstm.setDouble(3, livro.getValor());
-            pstm.setInt(4, Integer.parseInt(livro.getAutorId().toString()));
+            pstm.setInt(4, livro.getAutorId());
             pstm.execute();
             pstm.close();
         } catch(SQLException e){
