@@ -34,7 +34,9 @@
                             ArrayList<Autor> lista = autorDAO.PesquisarAutor();
 
                             for (int i = 0; i < lista.size(); i++) {
-                                out.print("<option  value='"+lista.get(i).getAutorId()+"'>"+lista.get(i).getAutorId()+" - "+lista.get(i).getNomeAutor()+"</option>");
+                               %>
+                                <option  value="<%=lista.get(i).getAutorId()%>"><%=lista.get(i).getAutorId()%> - <%=lista.get(i).getNomeAutor()%></option>
+                                <%
                             }
                         %>
                     </select>
