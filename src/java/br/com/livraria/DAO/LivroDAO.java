@@ -48,11 +48,13 @@ public class LivroDAO {
             
             while(rs.next()){
                                
-                LivroFisico livroFisico = new LivroFisico();
-                livroFisico.setLivroID(rs.getInt("id")); 
-                livroFisico.setNomeLivro(rs.getString("nome_livro"));
-                
-                lista.add(livroFisico);
+                Livros livro = new Livros();
+                livro.setLivroID(rs.getInt("id")); 
+                livro.setNomeLivro(rs.getString("nome_livro"));
+                livro.setIsbn(rs.getString("isbn"));
+                livro.setValor(rs.getDouble("valor"));
+                livro.setAutorId(rs.getInt("autorId"));
+                lista.add(livro);
                
             }
             pstm.close();
