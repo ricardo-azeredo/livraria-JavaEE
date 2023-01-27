@@ -1,8 +1,3 @@
-<%-- 
-    Document   : addLivroAction
-    Author     : Rico
---%>
-
 <%@page import="br.com.livraria.DTO.Autor"%>
 <%@page import="br.com.livraria.DAO.LivroDAO"%>
 <%@page import="br.com.livraria.DTO.Livros"%>
