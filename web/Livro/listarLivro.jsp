@@ -43,14 +43,21 @@
                                     out.print("<td>"+lista.get(i).getValor()+"</td>");
                                     out.print("<td>"+lista.get(i).getAutorId()+"</td>");
 
-                                    out.print("<td><a type='button' class='btn btn-primary' href='frmAlterarLivroView.jsp?id=" 
+                                    out.print("<td><a type='button' class='btn btn-primary me-2' href='frmAlterarLivroView.jsp?id=" 
                                                 + lista.get(i).getLivroID() +
                                                 "&nome="+ lista.get(i).getNomeLivro() + 
                                                 "&isbn="+ lista.get(i).getIsbn()+
                                                 "&valor="+ lista.get(i).getValor()+
                                                 "&autorId="+ lista.get(i).getAutorId()+
-                                                "'>Alterar </a></td>");
-                                    %>
+                                                "'>Alterar </a>");
+                                    out.print("<a type='button' class='btn btn-danger' href='frmExcluirLivroView.jsp?id=" 
+                                                + lista.get(i).getLivroID() +
+                                                "&nome="+ lista.get(i).getNomeLivro() + 
+                                                "&isbn="+ lista.get(i).getIsbn()+
+                                                "&valor="+ lista.get(i).getValor()+
+                                                "&autorId="+ lista.get(i).getAutorId()+
+                                                "'>Excluir </a></td>");                                                
+                                %>
                                     
                                 </tr>
                                 <%

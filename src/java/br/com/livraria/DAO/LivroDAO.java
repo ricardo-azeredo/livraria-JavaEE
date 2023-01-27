@@ -81,4 +81,19 @@ public class LivroDAO {
             System.out.println("Não foi possível alterar. erro: " + e);
         }
     }
+    
+    public void ExcluirLivro(Livros livros) throws ClassNotFoundException{
+        String sql = "DELETE FROM livros WHERE id = ?";
+        conn = new ConexaoDAO().conexaoDB();
+        
+        try {
+            pstm = conn.prepareStatement(sql);
+            pstm.setInt(1, livros.getLivroID());
+            pstm.execute();
+            pstm.close();
+            
+        }catch (SQLException e){
+            System.out.println("Não foi possível excluir o livro. "+ e);
+        }
+    }
 }
