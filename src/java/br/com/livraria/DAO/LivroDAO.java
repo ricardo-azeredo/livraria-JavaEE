@@ -1,7 +1,6 @@
 
 package br.com.livraria.DAO;
 
-import br.com.livraria.DTO.LivroFisico;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -62,5 +61,24 @@ public class LivroDAO {
             System.out.println("Não há livros para ser exibidos");
         }
         return lista;
+    }
+    
+    public void AlterarLivro(Livros livros) throws ClassNotFoundException{
+        String sql = "UPDATE livros SET  nome_livro = ?, isbn = ?, valor = ?, autorId = ? WHERE id = ?";
+        conn = new ConexaoDAO().conexaoDB();
+        
+        try {
+            pstm = conn.prepareStatement(sql);
+            pstm.setString(1, livros.getNomeLivro());
+            pstm.setString(2, livros.getIsbn());
+            pstm.setDouble(3,livros.getValor());
+            pstm.setInt(4, livros.getAutorId());
+            pstm.setInt(5, livros.getLivroID());
+            pstm.execute();
+            pstm.close();
+            
+        } catch(SQLException e){
+            System.out.println("Não foi possível alterar. erro: " + e);
+        }
     }
 }

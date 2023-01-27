@@ -18,6 +18,7 @@ public class AutorDAO {
     PreparedStatement pstm;
     ResultSet rs;
     ArrayList<Autor> lista = new ArrayList<>();
+    ArrayList<Autor> infoAutor = new ArrayList<>();
     
     public void CadastrarAutor(Autor autor) throws ClassNotFoundException {
         String sql = "INSERT INTO autor(nome, email) VALUES (?, ?)";
@@ -54,10 +55,31 @@ public class AutorDAO {
             }
             pstm.close();
         } catch(SQLException e){
-            System.out.println("Não há livros para ser exibidos");
+            System.out.println("Não há Autores para ser exibidos");
         }
         return lista;
     }
     
-    
+    public ArrayList<Autor> PesquisarAutorPorId(int id) throws ClassNotFoundException{
+        String sql = "SELECT * FROM autor WHERE id = "+ id;
+        conn = new ConexaoDAO().conexaoDB();
+        
+        try {
+            pstm = conn.prepareStatement(sql);
+            rs = pstm.executeQuery();
+            
+            while(rs.next()){
+                Autor autor = new Autor();
+                autor.setAutorId(rs.getInt("id"));
+                autor.setNomeAutor(rs.getString("nome"));
+                
+                infoAutor.add(autor);
+            }
+            pstm.close();            
+        } catch(SQLException e) {
+            System.out.println("Não há autor");
+        }
+        
+        return infoAutor;
+    }
 }
