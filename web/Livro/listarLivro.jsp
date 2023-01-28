@@ -1,4 +1,6 @@
 
+<%@page import="br.com.livraria.DTO.Autor"%>
+<%@page import="br.com.livraria.DAO.AutorDAO"%>
 <%@page import="java.text.NumberFormat"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="br.com.livraria.DTO.LivroDigital"%>
@@ -39,9 +41,12 @@
                                 ArrayList<Livros> lista = livroDAO.PesquisarLivro();
                                 LivroFisico livroFisico = new LivroFisico();
                                 LivroDigital livroDigital = new LivroDigital();
+                                AutorDAO autorDAO = new AutorDAO();
+                                ArrayList<Autor> autor = autorDAO.PesquisarAutor();
+                                
                                 
                                 for (int i = 0; i < lista.size(); i++) {
-                                   
+                                   ArrayList<Autor> info = autorDAO.PesquisarAutorPorId(lista.get(i).getAutorId());
                                 %>
                                 <tr>
                                     
@@ -53,8 +58,11 @@
                                     out.print("<td>"+lista.get(i).getIsbn()+"</td>");
                                     out.print("<td>"+String.format("%.2f",lista.get(i).getValor())+"</td>");
                                     out.print("<td>"+String.format("%.2f", livroFisico.MostrarDesconto(valor))+"</td>");
-                                    out.print("<td>"+String.format("%.2f",livroDigital.MostrarDesconto(valor))+"</td>");        
-                                    out.print("<td>"+lista.get(i).getAutorId()+"</td>");
+                                    out.print("<td>"+String.format("%.2f",livroDigital.MostrarDesconto(valor))+"</td>");
+                                    
+                                    out.print("<td>"+info.get(i).getNomeAutor()+"</td>");
+                                    
+                                    
 
                                     out.print("<td><a type='button' class='btn btn-primary me-2' href='frmAlterarLivroView.jsp?id=" 
                                                 + lista.get(i).getLivroID() +
