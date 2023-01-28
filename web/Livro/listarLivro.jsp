@@ -1,4 +1,6 @@
 
+<%@page import="java.text.NumberFormat"%>
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="br.com.livraria.DTO.LivroDigital"%>
 <%@page import="br.com.livraria.DTO.LivroFisico"%>
 <%@page import="br.com.livraria.DAO.LivroDAO"%>
@@ -45,12 +47,13 @@
                                     
                                 <%
                                     double valor = lista.get(i).getValor();
+                                                                                                            
                                     out.print("<td>"+lista.get(i).getLivroID()+"</td>");
                                     out.print("<td>"+lista.get(i).getNomeLivro()+"</td>");                                    
                                     out.print("<td>"+lista.get(i).getIsbn()+"</td>");
-                                    out.print("<td>"+lista.get(i).getValor()+"</td>");
-                                    out.print("<td>"+livroFisico.MostrarDesconto(valor)+"</td>");
-                                    out.print("<td>"+livroDigital.MostrarDesconto(valor)+"</td>");        
+                                    out.print("<td>"+String.format("%.2f",lista.get(i).getValor())+"</td>");
+                                    out.print("<td>"+String.format("%.2f", livroFisico.MostrarDesconto(valor))+"</td>");
+                                    out.print("<td>"+String.format("%.2f",livroDigital.MostrarDesconto(valor))+"</td>");        
                                     out.print("<td>"+lista.get(i).getAutorId()+"</td>");
 
                                     out.print("<td><a type='button' class='btn btn-primary me-2' href='frmAlterarLivroView.jsp?id=" 
