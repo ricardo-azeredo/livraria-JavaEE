@@ -28,7 +28,7 @@
                 </div>
                 <div class="col-md-4">
                     <label class="form-label">Autor</label><br/>
-                    <select name="autor" class="form-control">
+                    <select name="autor" class="form-select">
                         <%
                             AutorDAO autorDAO = new AutorDAO();
                             ArrayList<Autor> lista = autorDAO.PesquisarAutor();
